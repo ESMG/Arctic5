@@ -119,9 +119,6 @@ OBC_COMPUTED_VORTICITY = True   !   [Boolean] default = False
 OBC_ZERO_BIHARMONIC = True      !   [Boolean] default = False
                                 ! If true, zeros the Laplacian of flow on open boundaries in the biharmonic
                                 ! viscosity term.
-RAMP_OBCS = True                !   [Boolean] default = False
-                                ! If true, ramps from zero to the external values over time, witha ramping
-                                ! timescale given by RAMP_TIMESCALE. Ramping SSH only so far
 OBC_RAMP_TIMESCALE = 2.0        !   [days] default = 1.0
                                 ! If RAMP_OBCS is true, this sets the ramping timescale.
 OBC_SEGMENT_001 = "J=N,I=N:0,FLATHER,ORLANSKI,NUDGED,ORLANSKI_TAN,NUDGED_TAN" !
@@ -150,13 +147,13 @@ OBC_SEGMENT_004_VELOCITY_NUDGING_TIMESCALES = 3.0, 360.0 !   [days] default = 0.
                                 ! velocities.
 BRUSHCUTTER_MODE = True         !   [Boolean] default = False
                                 ! If true, read external OBC data on the supergrid.
-OBC_SEGMENT_001_DATA = "U=file:OBC_1980.nc(u),V=file:OBC_1980.nc(v),SSH=file:OBC_1980.nc(zeta),TEMP=file:OBC_1980.nc(temp),SALT=file:OBC_1980.nc(salt)" !
+OBC_SEGMENT_001_DATA = "U=file:OBC.nc(u),V=file:OBC.nc(v),SSH=file:OBC.nc(zeta),TEMP=file:OBC.nc(temp),SALT=file:OBC.nc(salt)" !
                                 ! OBC segment docs
-OBC_SEGMENT_002_DATA = "U=file:OBC_1980.nc(u),V=file:OBC_1980.nc(v),SSH=file:OBC_1980.nc(zeta),TEMP=file:OBC_1980.nc(temp),SALT=file:OBC_1980.nc(salt)" !
+OBC_SEGMENT_002_DATA = "U=file:OBC.nc(u),V=file:OBC.nc(v),SSH=file:OBC.nc(zeta),TEMP=file:OBC.nc(temp),SALT=file:OBC.nc(salt)" !
                                 ! OBC segment docs
-OBC_SEGMENT_003_DATA = "U=file:OBC_1980.nc(u),V=file:OBC_1980.nc(v),SSH=file:OBC_1980.nc(zeta),TEMP=file:OBC_1980.nc(temp),SALT=file:OBC_1980.nc(salt)" !
+OBC_SEGMENT_003_DATA = "U=file:OBC.nc(u),V=file:OBC.nc(v),SSH=file:OBC.nc(zeta),TEMP=file:OBC.nc(temp),SALT=file:OBC.nc(salt)" !
                                 ! OBC segment docs
-OBC_SEGMENT_004_DATA = "U=file:OBC_1980.nc(u),V=file:OBC_1980.nc(v),SSH=file:OBC_1980.nc(zeta),TEMP=file:OBC_1980.nc(temp),SALT=file:OBC_1980.nc(salt)" !
+OBC_SEGMENT_004_DATA = "U=file:OBC.nc(u),V=file:OBC.nc(v),SSH=file:OBC.nc(zeta),TEMP=file:OBC.nc(temp),SALT=file:OBC.nc(salt)" !
                                 ! OBC segment docs
 OBC_TRACER_RESERVOIR_LENGTH_SCALE_OUT = 3000.0 !   [m] default = 0.0
                                 ! An effective length scale for restoring the tracer concentration at the
@@ -311,6 +308,13 @@ TEMP_IC_VAR = "temp"            ! default = "PTEMP"
                                 ! The initial condition variable for potential temperature.
 SALT_IC_VAR = "salt"            ! default = "SALT"
                                 ! The initial condition variable for salinity.
+DEPRESS_INITIAL_SURFACE = True  !   [Boolean] default = False
+                                ! If true,  depress the initial surface to avoid huge tsunamis when a large
+                                ! surface pressure is applied.
+SURFACE_HEIGHT_IC_FILE = "initial_condition_SODA3_1980-01-03.nc" !
+                                ! The initial condition file for the surface height.
+SURFACE_HEIGHT_IC_VAR = "ssh"   ! default = "SSH"
+                                ! The initial condition variable for the surface height.
 
 ! === module MOM_diag_mediator ===
 

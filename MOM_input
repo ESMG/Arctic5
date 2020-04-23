@@ -158,17 +158,17 @@ OBC_SEGMENT_004_VELOCITY_NUDGING_TIMESCALES = 3, 360.0 !   [days] default = 0.0
                                 ! velocities.
 BRUSHCUTTER_MODE = True         !   [Boolean] default = False
                                 ! If true, read external OBC data on the supergrid.
-OBC_SEGMENT_001_DATA = "U=file:OBC_1980.nc(u),V=file:OBC_1980.nc(v),SSH=file:OBC_1980.nc(zeta),TEMP=file:OBC_1980.nc(temp),SALT=file:OBC_1980.nc(salt)" !
-OBC_SEGMENT_002_DATA = "U=file:OBC_1980.nc(u),V=file:OBC_1980.nc(v),SSH=file:OBC_1980.nc(zeta),TEMP=file:OBC_1980.nc(temp),SALT=file:OBC_1980.nc(salt)" !
-OBC_SEGMENT_003_DATA = "U=file:OBC_1980.nc(u),V=file:OBC_1980.nc(v),SSH=file:OBC_1980.nc(zeta),TEMP=file:OBC_1980.nc(temp),SALT=file:OBC_1980.nc(salt)" !
-OBC_SEGMENT_004_DATA = "U=file:OBC_1980.nc(u),V=file:OBC_1980.nc(v),SSH=file:OBC_1980.nc(zeta),TEMP=file:OBC_1980.nc(temp),SALT=file:OBC_1980.nc(salt)" !
+OBC_SEGMENT_001_DATA = "U=file:OBC.nc(u),V=file:OBC.nc(v),SSH=file:OBC.nc(zeta),TEMP=file:OBC.nc(temp),SALT=file:OBC.nc(salt)" !
+OBC_SEGMENT_002_DATA = "U=file:OBC.nc(u),V=file:OBC.nc(v),SSH=file:OBC.nc(zeta),TEMP=file:OBC.nc(temp),SALT=file:OBC.nc(salt)" !
+OBC_SEGMENT_003_DATA = "U=file:OBC.nc(u),V=file:OBC.nc(v),SSH=file:OBC.nc(zeta),TEMP=file:OBC.nc(temp),SALT=file:OBC.nc(salt)" !
+OBC_SEGMENT_004_DATA = "U=file:OBC.nc(u),V=file:OBC.nc(v),SSH=file:OBC.nc(zeta),TEMP=file:OBC.nc(temp),SALT=file:OBC.nc(salt)" !
 OBC_TRACER_RESERVOIR_LENGTH_SCALE_OUT = 3000.0 !   [m] default = 0.0
                                 ! An effective length scale for restoring the tracer concentration at the
                                 ! boundaries to externally imposed values when the flow is exiting the domain.
 OBC_TRACER_RESERVOIR_LENGTH_SCALE_IN = 3.0E+04 !   [m] default = 0.0
                                 ! An effective length scale for restoring the tracer concentration at the
                                 ! boundaries to values from the interior when the flow is entering the domain.
-RAMP_OBCS = True                ! default = False
+RAMP_OBCS = False               ! default = False
 OBC_RAMP_TIMESCALE = 2.0        !   [days] default = 1.0
 MASKING_DEPTH = 1.0             !   [m] default = -9999.0
                                 ! The depth below which to mask points as land points, for which all fluxes are
@@ -313,6 +313,9 @@ TEMP_IC_VAR = "temp"            ! default = "PTEMP"
 SALT_IC_VAR = "salt"            ! default = "SALT"
                                 ! The initial condition variable for salinity.
 TEMP_SALT_INIT_VERTICAL_REMAP_ONLY = True !   [Boolean] default = False
+DEPRESS_INITIAL_SURFACE = True  !   [Boolean] default = False
+SURFACE_HEIGHT_IC_FILE = "initial_condition_SODA3_1980-01-03.nc" !
+SURFACE_HEIGHT_IC_VAR = "ssh"
 
 ! === module MOM_diag_mediator ===
 

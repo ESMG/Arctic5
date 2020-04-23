@@ -249,7 +249,7 @@ OBC_ZERO_BIHARMONIC = True      !   [Boolean] default = False
                                 ! viscosity term.
 MASK_OUTSIDE_OBCS = False       !   [Boolean] default = False
                                 ! If true, set the areas outside open boundaries to be land.
-RAMP_OBCS = True                !   [Boolean] default = False
+RAMP_OBCS = False               !   [Boolean] default = False
                                 ! If true, ramps from zero to the external values over time, witha ramping
                                 ! timescale given by RAMP_TIMESCALE. Ramping SSH only so far
 OBC_RAMP_TIMESCALE = 2.0        !   [days] default = 1.0
@@ -284,13 +284,13 @@ REMAPPING_2018_ANSWERS = False  !   [Boolean] default = False
                                 ! If true, use the order of arithmetic and expressions that recover the answers
                                 ! from the end of 2018.  Otherwise, use updated and more robust forms of the
                                 ! same expressions.
-OBC_SEGMENT_001_DATA = "U=file:OBC_1980.nc(u),V=file:OBC_1980.nc(v),SSH=file:OBC_1980.nc(zeta),TEMP=file:OBC_1980.nc(temp),SALT=file:OBC_1980.nc(salt)" !
+OBC_SEGMENT_001_DATA = "U=file:OBC.nc(u),V=file:OBC.nc(v),SSH=file:OBC.nc(zeta),TEMP=file:OBC.nc(temp),SALT=file:OBC.nc(salt)" !
                                 ! OBC segment docs
-OBC_SEGMENT_002_DATA = "U=file:OBC_1980.nc(u),V=file:OBC_1980.nc(v),SSH=file:OBC_1980.nc(zeta),TEMP=file:OBC_1980.nc(temp),SALT=file:OBC_1980.nc(salt)" !
+OBC_SEGMENT_002_DATA = "U=file:OBC.nc(u),V=file:OBC.nc(v),SSH=file:OBC.nc(zeta),TEMP=file:OBC.nc(temp),SALT=file:OBC.nc(salt)" !
                                 ! OBC segment docs
-OBC_SEGMENT_003_DATA = "U=file:OBC_1980.nc(u),V=file:OBC_1980.nc(v),SSH=file:OBC_1980.nc(zeta),TEMP=file:OBC_1980.nc(temp),SALT=file:OBC_1980.nc(salt)" !
+OBC_SEGMENT_003_DATA = "U=file:OBC.nc(u),V=file:OBC.nc(v),SSH=file:OBC.nc(zeta),TEMP=file:OBC.nc(temp),SALT=file:OBC.nc(salt)" !
                                 ! OBC segment docs
-OBC_SEGMENT_004_DATA = "U=file:OBC_1980.nc(u),V=file:OBC_1980.nc(v),SSH=file:OBC_1980.nc(zeta),TEMP=file:OBC_1980.nc(temp),SALT=file:OBC_1980.nc(salt)" !
+OBC_SEGMENT_004_DATA = "U=file:OBC.nc(u),V=file:OBC.nc(v),SSH=file:OBC.nc(zeta),TEMP=file:OBC.nc(temp),SALT=file:OBC.nc(salt)" !
                                 ! OBC segment docs
 OBC_RADIATION_MAX = 10.0        !   [m s-1] default = 10.0
                                 ! The maximum magnitude of the baroclinic radiation velocity (or speed of
@@ -612,13 +612,19 @@ CONVERT_THICKNESS_UNITS = False !   [Boolean] default = False
                                 ! If true,  convert the thickness initial conditions from units of m to kg m-2
                                 ! or vice versa, depending on whether BOUSSINESQ is defined. This does not apply
                                 ! if a restart file is read.
-DEPRESS_INITIAL_SURFACE = False !   [Boolean] default = False
+DEPRESS_INITIAL_SURFACE = True  !   [Boolean] default = False
                                 ! If true,  depress the initial surface to avoid huge tsunamis when a large
                                 ! surface pressure is applied.
 TRIM_IC_FOR_P_SURF = False      !   [Boolean] default = False
                                 ! If true, cuts way the top of the column for initial conditions at the depth
                                 ! where the hydrostatic pressure matches the imposed surface pressure which is
                                 ! read from file.
+SURFACE_HEIGHT_IC_FILE = "initial_condition_SODA3_1980-01-03.nc" !
+                                ! The initial condition file for the surface height.
+SURFACE_HEIGHT_IC_VAR = "ssh"   ! default = "SSH"
+                                ! The initial condition variable for the surface height.
+SURFACE_HEIGHT_IC_SCALE = 1.0   !   [variable] default = 1.0
+                                ! A scaling factor to convert SURFACE_HEIGHT_IC_VAR into units of m
 REGRID_ACCELERATE_INIT = False  !   [Boolean] default = False
                                 ! If true, runs REGRID_ACCELERATE_ITERATIONS iterations of the regridding
                                 ! algorithm to push the initial grid to be consistent with the initial
