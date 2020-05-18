@@ -12,10 +12,11 @@ CCS1 50 vertical levels
 #"ocean_model","salt","salt","ocean_hourly","all",.false.,"none",2
 #"ocean_model",  "taux",       "taux",             "ocean_hourly", "all", ".false.", "none",2
 #"ocean_model",  "tauy",       "tauy",             "ocean_hourly", "all", ".false.", "none",2
-#"ice_model",  "CI_tot",     "aice",      "ocean_hourly", "all", ".false.", "none",2
+"ice_model",  "CI_tot",     "aice",      "ocean_hourly", "all", ".false.", "none",2
 #"ice_model",  "UI",     "uice",      "ocean_hourly", "all", ".false.", "none",2
 #"ice_model",  "VI",     "vice",      "ocean_hourly", "all", ".false.", "none",2
-#"ice_model",  "HI",     "hice",      "ocean_hourly", "all", ".false.", "none",2
+"ice_model",  "HI",     "hice",      "ocean_hourly", "all", ".false.", "none",2
+"ice_model",  "SWDN",     "swdn",      "ocean_hourly", "all", ".false.", "none",2
 
 
 #"ocean_model", "eta_hifreq",          "eta",              "ocean_bt", "all", "mean", "none",2
@@ -44,3 +45,5 @@ CCS1 50 vertical levels
 "ice_model",  "UI",     "uice",      "ocean_daily", "all", "mean", "none",2
 "ice_model",  "VI",     "vice",      "ocean_daily", "all", "mean", "none",2
 "ice_model",  "HI",     "hice",      "ocean_daily", "all", "mean", "none",2
+"ice_model",  "sh_d_hf",     "sh_d_hf",      "ocean_daily", "all", "mean", "none",2
+"ice_model",  "SWDN",    "swdn",      "ocean_daily", "all", "mean", "none",2
