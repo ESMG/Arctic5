@@ -23,15 +23,15 @@ lst_file = []
 #for year in lst_year:
 #    year = np.str(year)
 #lst = subprocess.getoutput('ls clima/*.nc')
-lst = subprocess.getoutput('ls 19800104.ocean_daily_old.nc')
+lst = subprocess.getoutput('ls 19800104.ocean_daily.nc')
 #lst = subprocess.getoutput('ls months/1991_04.nc')
 lst = lst.split()
 lst_file = lst_file + lst
 
 grd = netCDF4.Dataset('sea_ice_geometry.nc', "r")
 
-clat = grd.variables["geolatb"][:]
-clon = grd.variables["geolonb"][:]
+clat = grd.variables["geolat"][:]
+clon = grd.variables["geolon"][:]
 
 m = projmap.Projmap('arctic')
 x, y = m(clon, clat)

@@ -76,7 +76,6 @@ ICE_THICKNESS_INIT_CONFIG = "file" ! default = "data_override"
                                 !     data_override - use the data_override capability or zero everywhere
                                 !     uniform - sea ice has uniform thickness where the concentration is
                                 !       nonzero.
-ICE_INIT_MASS = 1800.0
 ICE_CONCENTRATION_FILE = "ice_mass.nc" !
                                 ! The name of the sea ice concentration file.
 ICE_CONCENTRATION_IC_VAR = "aice" ! default = "conc_ice"
@@ -109,11 +108,11 @@ TRANSMUTATION_RATE_VAR = "rate" ! default = "transmute_rate"
 
 ! === module SIS_dyn_trans ===
 ! This module updates the ice momentum and does ice transport.
-DT_ICE_DYNAMICS = 600.0         !   [seconds] default = -1.0
+DT_ICE_DYNAMICS = 300.0         !   [seconds] default = -1.0
                                 ! The time step used for the slow ice dynamics, including stepping the
                                 ! continuity equation and interactions between the ice mass field and
                                 ! velocities.  If 0 or negative the coupling time step will be used.
-DT_RHEOLOGY = 50.0              !   [seconds] default = -1.0
+DT_RHEOLOGY = -1.0              !   [seconds] default = -1.0
                                 ! The sub-cycling time step for iterating the rheology and ice momentum
                                 ! equations. If DT_RHEOLOGY is negative, the time step is set via NSTEPS_DYN.
 SIS_THICKNESS_ADVECTION_SCHEME = "PCM" ! default = "UPWIND_2D"
@@ -174,3 +173,4 @@ ICE_DELTA_EDD_R_POND = 1.0      !   [nondimensional] default = 0.0
 DOCUMENT_FILE = "SIS_parameter_doc" ! default = "MOM_parameter_doc"
                                 ! The basename for files where run-time parameters, their settings, units and
                                 ! defaults are documented. Blank will disable all parameter documentation.
+TRACER_ADV_REFILL_MASSLESS=True
