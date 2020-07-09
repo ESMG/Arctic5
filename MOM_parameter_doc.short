@@ -1,6 +1,5 @@
 ! This file was written by the model and records the non-default parameters used at run-time.
 
-
 ! === module MOM ===
 DIABATIC_FIRST = True           !   [Boolean] default = False
                                 ! If true, apply diabatic and thermodynamic processes, including buoyancy
@@ -44,7 +43,6 @@ NIGLOBAL = 688                  !
 NJGLOBAL = 1088                 !
                                 ! The total number of thickness grid points in the y-direction in the physical
                                 ! domain. With STATIC_MEMORY_ this is set in MOM_memory.h at compile time.
-
 
 ! === module MOM_fixed_initialization ===
 INPUTDIR = "INPUT"              ! default = "."
@@ -90,7 +88,7 @@ TOPO_CONFIG = "file"            !
                                 !     USER - call a user modified routine.
 TOPO_FILE = "ocean_topog.nc"    ! default = "topog.nc"
                                 ! The file from which the bathymetry is read.
-MAXIMUM_DEPTH = 6500.0          !   [m]
+MAXIMUM_DEPTH = 5500.0          !   [m]
                                 ! The maximum depth of the ocean.
 MINIMUM_DEPTH = 9.5             !   [m] default = 0.0
                                 ! If MASKING_DEPTH is unspecified, then anything shallower than MINIMUM_DEPTH is
@@ -175,8 +173,6 @@ NK = 50                         !   [nondim]
 
 ! === module MOM_boundary_update ===
 
-! === module MOM_tracer_registry ===
-
 ! === module segment_tracer_registry_init ===
 
 ! === module MOM_EOS ===
@@ -253,9 +249,6 @@ REMAPPING_SCHEME = "PPM_H4"     ! default = "PLM"
                                 ! PPM_IH4     (3rd-order accurate)
                                 ! PQM_IH4IH3  (4th-order accurate)
                                 ! PQM_IH6IH5  (5th-order accurate)
-
-! === module MOM_grid ===
-! Parameters providing information about the lateral grid.
 
 ! === module MOM_state_initialization ===
 THICKNESS_CONFIG = "coord"      ! default = "uniform"
@@ -451,6 +444,14 @@ BT_PROJECT_VELOCITY = True      !   [Boolean] default = False
                                 ! use a predictor continuity step to find the pressure field, and then to do a
                                 ! corrector continuity step using a weighted average of the old and new
                                 ! velocities, with weights of (1-BEBT) and BEBT.
+BT_NONLIN_STRESS = True         !   [Boolean] default = False
+                                ! If true, use the full depth of the ocean at the start of the barotropic step
+                                ! when calculating the surface stress contribution to the barotropic
+                                ! acclerations.  Otherwise use the depth based on bathyT.
+BT_STRONG_DRAG = True           !   [Boolean] default = False
+                                ! If true, use a stronger estimate of the retarding effects of strong bottom
+                                ! drag, by making it implicit with the barotropic time-step instead of implicit
+                                ! with the baroclinic time-step and dividing by the number of barotropic steps.
 BEBT = 0.2                      !   [nondim] default = 0.1
                                 ! BEBT determines whether the barotropic time stepping uses the forward-backward
                                 ! time-stepping scheme or a backward Euler scheme. BEBT is valid in the range
@@ -464,7 +465,6 @@ DTBT = -0.9                     !   [s or nondim] default = -0.98
                                 ! DTBT to 0 is the same as setting it to -0.98. The value of DTBT that will
                                 ! actually be used is an integer fraction of DT, rounding down.
 
-
 ! === module MOM_diagnostics ===
 
 ! === module MOM_diabatic_driver ===
@@ -472,9 +472,6 @@ DTBT = -0.9                     !   [s or nondim] default = -0.98
 ENERGETICS_SFC_PBL = True       !   [Boolean] default = False
                                 ! If true, use an implied energetics planetary boundary layer scheme to
                                 ! determine the diffusivity and viscosity in the surface boundary layer.
-
-
-
 
 ! === module MOM_set_diffusivity ===
 BBL_MIXING_AS_MAX = False       !   [Boolean] default = True
@@ -512,8 +509,6 @@ MAX_RINO_IT = 25                !   [nondim] default = 50
                                 ! The maximum number of iterations that may be used to estimate the Richardson
                                 ! number driven mixing.
 
-
-
 ! === module MOM_diabatic_aux ===
 ! The following parameters are used for auxiliary diabatic processes.
 PRESSURE_DEPENDENT_FRAZIL = True !   [Boolean] default = False
@@ -527,10 +522,6 @@ IGNORE_FLUXES_OVER_LAND = True  !   [Boolean] default = False
                                 ! ice formation under ice shelves. This flag only works when use_ePBL = True.
 
 ! === module MOM_energetic_PBL ===
-EPBL_USTAR_MIN = 1.45842E-18    !   [m s-1]
-                                ! The (tiny) minimum friction velocity used within the ePBL code, derived from
-                                ! OMEGA and ANGSTROM.
-
 
 ! === module MOM_opacity ===
 PEN_SW_SCALE = 10.0             !   [m] default = 0.0
@@ -552,8 +543,6 @@ CHECK_DIFFUSIVE_CFL = True      !   [Boolean] default = False
                                 ! equivalent of the CFL limit is not violated.  If false, always use the greater
                                 ! of 1 or MAX_TR_DIFFUSION_CFL iteration.
 
-
-
 ! === module MOM_sum_output ===
 MAXTRUNC = 100000               !   [truncations save_interval-1] default = 0
                                 ! The run will be stopped, and the day set to a very large value if the velocity
@@ -573,4 +562,3 @@ CD_TIDES = 0.0018               !   [nondim] default = 1.0E-04
                                 ! The drag coefficient that applies to the tides.
 
 ! === module MOM_restart ===
-
