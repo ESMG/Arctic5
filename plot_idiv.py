@@ -5,7 +5,6 @@ import sys
 import subprocess
 import pyroms
 from pyroms_toolbox import jday2date
-import projmap
 from mpl_toolkits.basemap import Basemap
 import numpy as np
 import matplotlib.pyplot as plt
@@ -24,7 +23,7 @@ lst_file = []
 #for year in lst_year:
 #    year = np.str(year)
 #lst = subprocess.getoutput('ls clima/*.nc')
-lst = subprocess.getoutput('ls 19800104.ocean_daily_old.nc')
+lst = subprocess.getoutput('ls 19800104.ocean_daily.nc')
 #lst = subprocess.getoutput('ls months/1991_04.nc')
 lst = lst.split()
 lst_file = lst_file + lst
@@ -38,7 +37,8 @@ x = grd.variables["x"][:]
 clat = grd.variables["y"][0::2,0::2]
 clon = grd.variables["x"][0::2,0::2]
 
-m = projmap.Projmap('arctic')
+m = Basemap(projection='stere', lat_0=90, lon_0=180, llcrnrlon=-210,
+    llcrnrlat=40, urcrnrlon=-50, urcrnrlat=50, resolution='h')
 x, y = m(clon, clat)
 levels = np.arange(-1.0, 1.0, 0.02)
 #cmap = plt.cm.get_cmap("PRGn")
@@ -50,7 +50,8 @@ for file in lst_file:
     times = nc.variables["time"][:]
     ntimes = len(times)
     for it in range(ntimes):
-        m = projmap.Projmap('arctic')
+        m = Basemap(projection='stere', lat_0=90, lon_0=180, llcrnrlon=-210,
+            llcrnrlat=40, urcrnrlon=-50, urcrnrlat=50, resolution='h')
         fig = plt.figure(figsize=(8,9))
 
         m.drawcoastlines()

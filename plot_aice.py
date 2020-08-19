@@ -5,7 +5,6 @@ import sys
 import subprocess
 import pyroms
 from pyroms_toolbox import jday2date
-import projmap
 from mpl_toolkits.basemap import Basemap
 import matplotlib.pyplot as plt
 from datetime import datetime
@@ -33,7 +32,8 @@ grd = netCDF4.Dataset('sea_ice_geometry.nc', "r")
 clat = grd.variables["geolat"][:]
 clon = grd.variables["geolon"][:]
 
-m = projmap.Projmap('arctic')
+m = Basemap(projection='stere', lat_0=90, lon_0=180, llcrnrlon=-210,
+    llcrnrlat=40, urcrnrlon=-50, urcrnrlat=50, resolution='h')
 x, y = m(clon, clat)
 levels = np.arange(0.0, 1.0, 0.02)
 cmap = plt.cm.get_cmap("PuBu_r")
@@ -45,7 +45,8 @@ for file in lst_file:
     times = nc.variables["time"][:]
     ntimes = len(times)
     for it in range(ntimes):
-        m = projmap.Projmap('arctic')
+        m = Basemap(projection='stere', lat_0=90, lon_0=180, llcrnrlon=-210,
+            llcrnrlat=40, urcrnrlon=-50, urcrnrlat=50, resolution='h')
         fig = plt.figure(figsize=(8,9))
 
         m.drawcoastlines()

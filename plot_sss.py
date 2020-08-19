@@ -5,7 +5,6 @@ import sys
 import subprocess
 import pyroms
 from pyroms_toolbox import jday2date
-import projmap
 from mpl_toolkits.basemap import Basemap
 import numpy as np
 import matplotlib.pyplot as plt
@@ -34,7 +33,8 @@ grd = netCDF4.Dataset('sea_ice_geometry.nc', "r")
 clat = grd.variables["geolat"][:]
 clon = grd.variables["geolon"][:]
 
-m = projmap.Projmap('arctic')
+m = Basemap(projection='stere', lat_0=90, lon_0=180, llcrnrlon=-210,
+    llcrnrlat=40, urcrnrlon=-50, urcrnrlat=50, resolution='h')
 #m = Basemap(llcrnrlon=-121., llcrnrlat=17., urcrnrlon=-125.0, urcrnrlat=53.0,\
 #            rsphere=(6378137.00,6356752.3142),\
 #            resolution='h', projection='lcc',\

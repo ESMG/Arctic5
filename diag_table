@@ -3,46 +3,51 @@ Arctic 50 vertical levels
 #"ocean_secs",           100, "seconds",  1, "hours", "time"
 "ocean_hourly",           1, "hours",   1, "hours", "time"
 "ocean_daily",            1, "days",   1, "hours", "time"
+"ocean_daily_uv",            1, "days",   1, "hours", "time"
+"ocean_daily_ts",            1, "days",   1, "hours", "time"
+"ocean_daily_ts",            1, "days",   1, "hours", "time"
+"ocean_model_z",          1, "days",   1, "hours", "time"
+"ocean_monthly",          1, "months", 1, "hours", "time"
+"ocean_Bering_Strait",           1, "days",   1, "days", "time"
+"ocean_Fram_Strait",            1, "days",   1, "days", "time"
 
 #"ocean_model","eta_hifreq","eta_hifreq","ocean_secs","all",.false.,"none",2
 #"ocean_model","ubt_hifreq","ubt_hifreq","ocean_secs","all",.false.,"none",2
 #"ocean_model","vbt_hifreq","vbt_hifreq","ocean_secs","all",.false.,"none",2
 
-#"ocean_model","u","u","ocean_hourly","all",.false.,"none",2
-#"ocean_model","v","v","ocean_hourly","all",.false.,"none",2
-#"ocean_model","h","h","ocean_hourly","all",.false.,"none",1
-#"ocean_model","e","e","ocean_hourly","all",.false.,"none",2
-"ocean_model","SSH","ssh","ocean_hourly","all",.false.,"none",2
-#"ocean_model","temp","temp","ocean_hourly","all",.false.,"none",2
-#"ocean_model","salt","salt","ocean_hourly","all",.false.,"none",2
-"ocean_model",  "taux",     "taux",             "ocean_hourly", "all", ".false.", "none",2
-"ocean_model",  "tauy",     "tauy",             "ocean_hourly", "all", ".false.", "none",2
-"ice_model",  "CI_tot",     "aice",      "ocean_hourly", "all", ".false.", "none",2
-#"ice_model",  "UI",         "uice",      "ocean_hourly", "all", ".false.", "none",2
-#"ice_model",  "VI",         "vice",      "ocean_hourly", "all", ".false.", "none",2
-"ice_model",  "HI",         "hice",      "ocean_hourly", "all", ".false.", "none",2
-"ice_model",  "sisnthick",  "snow_thick",      "ocean_hourly", "all", ".false.", "none",2
-"ice_model",  "TS",         "TS",      "ocean_hourly", "all", ".false.", "none",2
-"ice_model",  "T1",         "T1",      "ocean_hourly", "all", ".false.", "none",2
-"ice_model",  "T2",         "T2",      "ocean_hourly", "all", ".false.", "none",2
-"ice_model",  "FRAZIL",     "frazil",      "ocean_hourly", "all", ".false.", "none",2
-"ice_model",  "SWDN",       "swdn",      "ocean_hourly", "all", ".false.", "none",2
-"ice_model",  "Sal1",       "Sal1",      "ocean_hourly", "all", ".false.", "none",2
-"ice_model",  "Sal2",       "Sal2",      "ocean_hourly", "all", ".false.", "none",2
-"ice_model",  "Sal3",       "Sal3",      "ocean_hourly", "all", ".false.", "none",2
+"ocean_model", "SSH",          "ssh",              "ocean_hourly", "all", .false., "none",2
+"ocean_model", "ubt",          "ubt",              "ocean_hourly", "all", .false., "none",2
+"ocean_model", "vbt",          "vbt",              "ocean_hourly", "all", .false., "none",2
+#"ice_model",  "SWDN",       "swdn",      "ocean_hourly", "all", ".false.", "none",2
 
+# Bering Strait (east-west section)
+"ocean_model_z", "volcello", "volcello", "ocean_Bering_Strait",    "all", "mean", "369 391  358 358 -1 -1",2
+"ocean_model_z", "thetao","thetao",      "ocean_Bering_Strait",    "all", "mean", "369 391  358 358 -1 -1",2
+"ocean_model_z", "so",   "so",           "ocean_Bering_Strait",    "all", "mean", "369 391  358 358 -1 -1",2
+"ocean_model_z", "vmo",  "vmo",          "ocean_Bering_Strait",    "all", "mean", "369 391  358 358 -1 -1",2
+"ocean_model_z", "vo",   "vo",           "ocean_Bering_Strait",    "all", "mean", "369 391  358 358 -1 -1",2
+
+# Fram Strait east-west section for flow moving north/south
+"ocean_model_z", "volcello", "volcello", "ocean_Fram_Strait",  "all", "mean", "237 334  918 918 -1 -1",2
+"ocean_model_z", "thetao","thetao",      "ocean_Fram_Strait",  "all", "mean", "237 334  918 918 -1 -1",2
+"ocean_model_z", "so",   "so",           "ocean_Fram_Strait",  "all", "mean", "237 334  918 918 -1 -1",2
+"ocean_model_z", "vmo",  "vmo",          "ocean_Fram_Strait",  "all", "mean", "237 334  918 918 -1 -1",2
+"ocean_model_z", "vo",   "vo",           "ocean_Fram_Strait",  "all", "mean", "237 334  918 918 -1 -1",2
 
 #"ocean_model", "eta_hifreq",          "eta",              "ocean_bt", "all", "mean", "none",2
-"ocean_model", "SSU",          "ssu",              "ocean_daily", "all", "mean", "none",2
-"ocean_model", "SSV",          "ssv",              "ocean_daily", "all", "mean", "none",2
-"ocean_model", "SST",          "sst",              "ocean_daily", "all", "mean", "none",2
-"ocean_model", "SSS",          "sss",              "ocean_daily", "all", "mean", "none",2
-"ocean_model", "SSH",          "ssh",              "ocean_daily", "all", "mean", "none",2
-"ocean_model", "thetao",       "thetao",           "ocean_daily", "all", "mean", "none",2
-"ocean_model", "so",           "so",           "ocean_daily", "all", "mean", "none",2
-"ocean_model", "uo",           "uo",           "ocean_daily", "all", "mean", "none",2
-"ocean_model", "vo",           "vo",           "ocean_daily", "all", "mean", "none",2
-"ocean_model", "RV",           "RV",           "ocean_daily", "all", "mean", "none",2
+#"ocean_model", "SSU",          "ssu",              "ocean_daily", "all", "mean", "none",2
+#"ocean_model", "SSV",          "ssv",              "ocean_daily", "all", "mean", "none",2
+#"ocean_model", "SST",          "sst",              "ocean_daily", "all", "mean", "none",2
+#"ocean_model", "SSS",          "sss",              "ocean_daily", "all", "mean", "none",2
+"ocean_model", "SSH",          "ssh",              "ocean_daily_uv", "all", "mean", "none",2
+"ocean_model", "thetao",       "thetao",           "ocean_daily_ts", "all", "mean", "none",2
+"ocean_model", "so",           "so",               "ocean_daily_ts", "all", "mean", "none",2
+"ocean_model", "uo",           "uo",               "ocean_daily_uv", "all", "mean", "none",2
+"ocean_model", "vo",           "vo",               "ocean_daily_uv", "all", "mean", "none",2
+"ocean_model", "ubt",          "ubt",              "ocean_daily_uv", "all", "mean", "none",2
+"ocean_model", "vbt",          "vbt",              "ocean_daily_uv", "all", "mean", "none",2
+"ocean_model", "RV",           "RV",               "ocean_daily", "all", "mean", "none",2
+"ocean_model", "e",            "e",                "ocean_daily", "all", "mean", "none",2
 #"ocean_model",  "rlntds",     "rlntds",           "ocean_daily", "all", "mean", "none",2  # longwave down
 #"ocean_model",  "hfls",       "hfls",             "ocean_daily", "all", "mean", "none",2  # latent heat for evap+melt
 #"ocean_model",  "hfss",       "hfss",             "ocean_daily", "all", "mean", "none",2  # sensible from air-sea and ice-sea
@@ -58,6 +63,17 @@ Arctic 50 vertical levels
 "ice_model",  "UI",     "uice",      "ocean_daily", "all", "mean", "none",2
 "ice_model",  "VI",     "vice",      "ocean_daily", "all", "mean", "none",2
 "ice_model",  "HI",     "hice",      "ocean_daily", "all", "mean", "none",2
+"ice_model",  "HS",     "hsnow",     "ocean_daily", "all", "mean", "none",2
+"ice_model",  "sivol",     "sivol",     "ocean_daily", "all", "mean", "none",2
 "ice_model",  "sisnthick",   "snow_thick",      "ocean_daily", "all", "mean", "none",2
 "ice_model",  "sh_d_hf",     "sh_d_hf",      "ocean_daily", "all", "mean", "none",2
 "ice_model",  "SWDN",    "swdn",      "ocean_daily", "all", "mean", "none",2
+
+"ocean_model", "thetao",       "thetao",       "ocean_monthly", "all", "mean", "none",2
+"ocean_model", "so",           "so",           "ocean_monthly", "all", "mean", "none",2
+"ocean_model", "uo",           "uo",           "ocean_monthly", "all", "mean", "none",2
+"ocean_model", "vo",           "vo",           "ocean_monthly", "all", "mean", "none",2
+"ice_model",  "CI_tot",        "aice",         "ocean_monthly", "all", "mean", "none",2
+"ice_model",  "HI",     "hice",      "ocean_monthly", "all", "mean", "none",2
+"ice_model",  "HS",     "hsnow",     "ocean_monthly", "all", "mean", "none",2
+"ice_model",  "sivol",  "sivol",     "ocean_monthly", "all", "mean", "none",2

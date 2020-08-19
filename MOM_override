@@ -10,3 +10,4 @@ DEBUG_BT = False
 !#override LINEARIZED_BT_CORIOLIS = False
 #override BT_STRONG_DRAG = True
 #override BT_NONLIN_STRESS = True
+#override USE_GRID_SPACE_DIAGNOSTIC_AXES = True
