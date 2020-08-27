@@ -1,0 +1,21 @@
+  mv 19800104.ocean_Barrow_1.nc.0148 19800104.ocean_Barrow_1.nc
+
+  rm 19800104.ocean_Barrow_2.nc
+  mppnccombine 19800104.ocean_Barrow_2.nc 19800104.ocean_Barrow_2.nc.*
+  rm 19800104.ocean_Barrow_2.nc.*
+
+  mv 19800104.ocean_Bering_Strait.nc.* 19800104.ocean_Bering_Strait.nc
+
+  rm 19800104.ocean_CEO.nc
+  mppnccombine 19800104.ocean_CEO.nc 19800104.ocean_CEO.nc.*
+  rm 19800104.ocean_CEO.nc.*
+
+  rm 19800104.ocean_Fram_Strait.nc
+  mppnccombine 19800104.ocean_Fram_Strait.nc 19800104.ocean_Fram_Strait.nc.*
+  rm 19800104.ocean_Fram_Strait.nc.*
+
+  mv 19800104.ocean_GAK.nc.0110 19800104.ocean_GAK.nc
+
+  rm 19800104.ocean_Unimak.nc
+  mppnccombine 19800104.ocean_Unimak.nc 19800104.ocean_Unimak.nc.*
+  rm 19800104.ocean_Unimak.nc.*
