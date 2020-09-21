@@ -23,8 +23,8 @@
 /
 
  &coupler_nml
-            months = 11,
-            days   = 28,
+            months = 0,
+            days   = 1,
             hours  = 0,
             current_date = 1980,1,4,0,0,0,
             calendar = 'julian',
