@@ -11,3 +11,5 @@ DEBUG_BT = False
 #override BT_STRONG_DRAG = True
 #override BT_NONLIN_STRESS = True
 #override USE_GRID_SPACE_DIAGNOSTIC_AXES = True
+#override DO_RIVERMIX = True
+#override RIVERMIX_DEPTH = 10
