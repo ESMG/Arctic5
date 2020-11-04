@@ -207,9 +207,9 @@ TOPO_VARNAME = "depth"          ! default = "depth"
                                 ! The name of the bathymetry variable in TOPO_FILE.
 TOPO_EDITS_FILE = ""            ! default = ""
                                 ! The file from which to read a list of i,j,z topography overrides.
-MAXIMUM_DEPTH = 5500.0          !   [m]
+MAXIMUM_DEPTH = 6500.0          !   [m]
                                 ! The maximum depth of the ocean.
-MINIMUM_DEPTH = 9.5             !   [m] default = 0.0
+MINIMUM_DEPTH = 1.0             !   [m] default = 0.0
                                 ! If MASKING_DEPTH is unspecified, then anything shallower than MINIMUM_DEPTH is
                                 ! assumed to be land and all fluxes are masked out. If MASKING_DEPTH is
                                 ! specified, then all depths shallower than MINIMUM_DEPTH but deeper than
@@ -396,7 +396,7 @@ ANGSTROM = 1.0E-10              !   [m] default = 1.0E-10
                                 ! The minimum layer thickness, usually one-Angstrom.
 H_TO_M = 1.0                    !   [m H-1] default = 1.0
                                 ! A constant that translates the model's internal units of thickness into m.
-NK = 50                         !   [nondim]
+NK = 75                         !   [nondim]
                                 ! The number of model layers.
 
 ! === module MOM_boundary_update ===
@@ -521,7 +521,7 @@ REGRIDDING_COORDINATE_MODE = "Z*" ! default = "LAYER"
                                 !  ADAPTIVE - optimize for smooth neutral density surfaces
 REGRIDDING_COORDINATE_UNITS = "m" ! default = "m"
                                 ! Units of the regridding coordinate.
-ALE_COORDINATE_CONFIG = "FILE:vgrid_50_10m.nc,dz" ! default = "UNIFORM"
+ALE_COORDINATE_CONFIG = "FILE:vgrid_75_2m.nc,dz" ! default = "UNIFORM"
                                 ! Determines how to specify the coordinate resolution. Valid options are:
                                 !  PARAM       - use the vector-parameter ALE_RESOLUTION
                                 !  UNIFORM[:N] - uniformly distributed
@@ -535,7 +535,7 @@ ALE_COORDINATE_CONFIG = "FILE:vgrid_50_10m.nc,dz" ! default = "UNIFORM"
                                 !                the filename and two variable names, separated
                                 !                by a comma or space, for sigma-2 and dz. e.g.
                                 !                HYBRID:vgrid.nc,sigma2,dz
-!ALE_RESOLUTION = 10.067100048065186, 10.118700981140137, 10.139101028442383, 10.217899322509766, 10.276897430419922, 10.408500671386719, 10.541099548339844, 10.774101257324219, 11.046302795410156, 11.472900390625, 12.010498046875, 12.801902770996094, 13.838088989257812, 15.307113647460938, 17.258697509765625, 19.95050048828125, 23.514297485351562, 28.2908935546875, 34.482696533203125, 42.4569091796875, 52.3572998046875, 64.36129760742188, 78.25607299804688, 93.720703125, 109.98895263671875, 126.30145263671875, 141.72174072265625, 155.66082763671875, 167.62060546875, 177.565185546875, 185.495361328125, 191.73095703125, 196.4637451171875, 200.0712890625, 202.7197265625, 204.714111328125, 206.140869140625, 207.21923828125, 207.96875, 208.547119140625, 208.93408203125, 209.24560546875, 209.438720703125, 209.6123046875, 209.7021484375, 209.802734375, 209.8408203125, 209.9013671875, 2*209.912109375 !   [m]
+!ALE_RESOLUTION = 4*2.0, 2*2.01, 2.02, 2.03, 2.05, 2.08, 2.11, 2.15, 2.2, 2.27, 2.34, 2.44, 2.55, 2.69, 2.85, 3.04, 3.27, 3.54, 3.85, 4.22, 4.66, 5.18, 5.79, 6.52, 7.37, 8.37, 9.55, 10.94, 12.57, 14.48, 16.72, 19.33, 22.36, 25.87, 29.91, 34.53, 39.79, 45.72, 52.37, 59.76, 67.89, 76.74, 86.29, 96.47, 107.2, 118.35, 129.81, 141.42, 153.01, 164.41, 175.47, 186.01, 195.9, 205.01, 213.27, 220.6, 226.99, 232.43, 236.96, 240.63, 243.52, 245.72, 247.33, 248.45, 249.18, 249.62, 249.86, 249.96, 249.99, 2*250.0 !   [m]
                                 ! The distribution of vertical resolution for the target
                                 ! grid used for Eulerian-like coordinates. For example,
                                 ! in z-coordinate mode, the parameter is a list of level
@@ -1095,7 +1095,7 @@ UPWIND_1ST_CONTINUITY = False   !   [Boolean] default = False
                                 ! If true, CONTINUITY_PPM becomes a 1st-order upwind continuity solver.  This
                                 ! scheme is highly diffusive but may be useful for debugging or in single-column
                                 ! mode where its minimal stencil is useful.
-ETA_TOLERANCE = 1.0E-06         !   [m] default = 2.5E-09
+ETA_TOLERANCE = 1.0E-06         !   [m] default = 3.75E-09
                                 ! The tolerance for the differences between the barotropic and baroclinic
                                 ! estimates of the sea surface height due to the fluxes through each face.  The
                                 ! total tolerance for SSH is 4 times this value.  The default is

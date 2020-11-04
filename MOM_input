@@ -48,7 +48,7 @@ NJGLOBAL = 1088                 !
 
 ! === module MOM_verticalGrid ===
 ! Parameters providing information about the vertical grid.
-NK = 50                         !   [nondim]
+NK = 75                         !   [nondim]
                                 ! The number of model layers.
 
 ! === module MOM_fixed_initialization ===
@@ -95,9 +95,9 @@ TOPO_CONFIG = "file"            !
                                 !     USER - call a user modified routine.
 TOPO_FILE = "ocean_topog.nc"    ! default = "topog.nc"
                                 ! The file from which the bathymetry is read.
-MAXIMUM_DEPTH = 5500.0          !   [m]
+MAXIMUM_DEPTH = 6500.0          !   [m]
                                 ! The maximum depth of the ocean.
-MINIMUM_DEPTH = 9.5             !   [m] default = 0.0
+MINIMUM_DEPTH = 1.0             !   [m] default = 0.0
                                 ! If MASKING_DEPTH is unspecified, then anything shallower than MINIMUM_DEPTH is
                                 ! assumed to be land and all fluxes are masked out. If MASKING_DEPTH is
                                 ! specified, then all depths shallower than MINIMUM_DEPTH but deeper than
@@ -229,7 +229,7 @@ REGRIDDING_COORDINATE_MODE = "Z*" ! default = "LAYER"
                                 !  HYCOM1 - HyCOM-like hybrid coordinate
                                 !  SLIGHT - stretched coordinates above continuous isopycnal
                                 !  ADAPTIVE - optimize for smooth neutral density surfaces
-ALE_COORDINATE_CONFIG = "FILE:vgrid_50_10m.nc,dz" ! default = "UNIFORM"
+ALE_COORDINATE_CONFIG = "FILE:vgrid_75_2m.nc,dz" ! default = "UNIFORM"
                                 ! Determines how to specify the coordinate resolution. Valid options are:
                                 !  PARAM       - use the vector-parameter ALE_RESOLUTION
                                 !  UNIFORM[:N] - uniformly distributed
