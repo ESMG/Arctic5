@@ -16,6 +16,10 @@ Arctic 50 vertical levels
 "ocean_Barrow_2",            1, "hours",   1, "days", "time"
 "ocean_GAK",                 1, "hours",   1, "days", "time"
 "ocean_Unimak",              1, "hours",   1, "days", "time"
+"ocean_Fury",                1, "hours",   1, "days", "time"
+"ocean_Parry",               1, "hours",   1, "days", "time"
+"ocean_Cardigan",            1, "hours",   1, "days", "time"
+"ocean_Robeson",             1, "hours",   1, "days", "time"
 
 #"ocean_model","eta_hifreq","eta_hifreq","ocean_secs","all",.false.,"none",2
 #"ocean_model","ubt_hifreq","ubt_hifreq","ocean_secs","all",.false.,"none",2
@@ -75,6 +79,34 @@ Arctic 50 vertical levels
 "ocean_model_z", "umo",  "umo",          "ocean_Unimak",  "all", "mean", "498 498  135 142 -1 -1",2
 "ocean_model_z", "uo",   "uo",           "ocean_Unimak",  "all", "mean", "498 498  135 142 -1 -1",2
 
+# Fury and Hecla Strait east-west section for flow moving north/south
+"ocean_model_z", "volcello", "volcello", "ocean_Fury",  "all", "mean", "587 591  830 830 -1 -1",2
+"ocean_model_z", "thetao","thetao",      "ocean_Fury",  "all", "mean", "587 591  830 830 -1 -1",2
+"ocean_model_z", "so",   "so",           "ocean_Fury",  "all", "mean", "587 591  830 830 -1 -1",2
+"ocean_model_z", "umo",  "umo",          "ocean_Fury",  "all", "mean", "587 591  830 830 -1 -1",2
+"ocean_model_z", "uo",   "uo",           "ocean_Fury",  "all", "mean", "587 591  830 830 -1 -1",2
+
+# Parry Channel/Lancaster Sound east-west section for flow moving north/south
+"ocean_model_z", "volcello", "volcello", "ocean_Parry",  "all", "mean", "518 531  802 802 -1 -1",2
+"ocean_model_z", "thetao","thetao",      "ocean_Parry",  "all", "mean", "518 531  802 802 -1 -1",2
+"ocean_model_z", "so",   "so",           "ocean_Parry",  "all", "mean", "518 531  802 802 -1 -1",2
+"ocean_model_z", "umo",  "umo",          "ocean_Parry",  "all", "mean", "518 531  802 802 -1 -1",2
+"ocean_model_z", "uo",   "uo",           "ocean_Parry",  "all", "mean", "518 531  802 802 -1 -1",2
+
+# Cardigan Strait east-west section for flow moving north/south
+"ocean_model_z", "volcello", "volcello", "ocean_Cardigan",  "all", "mean", "491 494  780 780 -1 -1",2
+"ocean_model_z", "thetao","thetao",      "ocean_Cardigan",  "all", "mean", "491 494  780 780 -1 -1",2
+"ocean_model_z", "so",   "so",           "ocean_Cardigan",  "all", "mean", "491 494  780 780 -1 -1",2
+"ocean_model_z", "umo",  "umo",          "ocean_Cardigan",  "all", "mean", "491 494  780 780 -1 -1",2
+"ocean_model_z", "uo",   "uo",           "ocean_Cardigan",  "all", "mean", "491 494  780 780 -1 -1",2
+
+# Robeson Channel north-south section for flow moving east/west
+"ocean_model_z", "volcello", "volcello", "ocean_Robeson",  "all", "mean", "385 385  819 823 -1 -1",2
+"ocean_model_z", "thetao","thetao",      "ocean_Robeson",  "all", "mean", "385 385  819 823 -1 -1",2
+"ocean_model_z", "so",   "so",           "ocean_Robeson",  "all", "mean", "385 385  819 823 -1 -1",2
+"ocean_model_z", "umo",  "umo",          "ocean_Robeson",  "all", "mean", "385 385  819 823 -1 -1",2
+"ocean_model_z", "uo",   "uo",           "ocean_Robeson",  "all", "mean", "385 385  819 823 -1 -1",2
+
 #"ocean_model", "eta_hifreq",          "eta",              "ocean_bt", "all", "mean", "none",2
 #"ocean_model", "SSU",          "ssu",              "ocean_daily", "all", "mean", "none",2
 #"ocean_model", "SSV",          "ssv",              "ocean_daily", "all", "mean", "none",2
@@ -114,6 +146,7 @@ Arctic 50 vertical levels
 "ocean_model", "so",           "so",           "ocean_monthly", "all", "mean", "none",2
 "ocean_model", "uo",           "uo",           "ocean_monthly", "all", "mean", "none",2
 "ocean_model", "vo",           "vo",           "ocean_monthly", "all", "mean", "none",2
+"ocean_model", "e",            "e",            "ocean_monthly", "all", "mean", "none",2
 "ice_model",  "CI_tot",        "aice",         "ocean_monthly", "all", "mean", "none",2
 "ice_model",  "HI",     "hice",      "ocean_monthly", "all", "mean", "none",2
 "ice_model",  "HS",     "hsnow",     "ocean_monthly", "all", "mean", "none",2

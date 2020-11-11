@@ -13,3 +13,4 @@ DEBUG_BT = False
 #override USE_GRID_SPACE_DIAGNOSTIC_AXES = True
 #override DO_RIVERMIX = True
 #override RIVERMIX_DEPTH = 10
+#override USE_LA_LI2016 = True

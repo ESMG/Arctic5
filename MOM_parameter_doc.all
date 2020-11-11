@@ -799,7 +799,7 @@ MEKE_KHTH_FAC = 0.0             !   [nondim] default = 0.0
                                 ! A factor that maps MEKE%Kh to KhTh.
 MEKE_KHTR_FAC = 0.0             !   [nondim] default = 0.0
                                 ! A factor that maps MEKE%Kh to KhTr.
-MEKE_KHMEKE_FAC = 0.0           !   [nondim] default = 0.0
+MEKE_KHMEKE_FAC = 1.0           !   [nondim] default = 0.0
                                 ! A factor that maps MEKE%Kh to Kh for MEKE itself.
 MEKE_OLD_LSCALE = False         !   [Boolean] default = False
                                 ! If true, use the old formula for length scale which is a function of grid
@@ -825,10 +825,10 @@ MEKE_FIXED_MIXING_LENGTH = 0.0  !   [m] default = 0.0
 MEKE_ALPHA_DEFORM = 0.0         !   [nondim] default = 0.0
                                 ! If positive, is a coefficient weighting the deformation scale in the
                                 ! expression for mixing length used in MEKE-derived diffusivity.
-MEKE_ALPHA_RHINES = 0.0         !   [nondim] default = 0.0
+MEKE_ALPHA_RHINES = 0.15        !   [nondim] default = 0.0
                                 ! If positive, is a coefficient weighting the Rhines scale in the expression for
                                 ! mixing length used in MEKE-derived diffusivity.
-MEKE_ALPHA_EADY = 0.0           !   [nondim] default = 0.0
+MEKE_ALPHA_EADY = 0.15          !   [nondim] default = 0.0
                                 ! If positive, is a coefficient weighting the Eady length scale in the
                                 ! expression for mixing length used in MEKE-derived diffusivity.
 MEKE_ALPHA_FRICT = 0.0          !   [nondim] default = 0.0
@@ -969,7 +969,7 @@ LINEAR_DRAG = False             !   [Boolean] default = False
 DOUBLE_DIFFUSION = False        !   [Boolean] default = False
                                 ! If true, increase diffusivites for temperature or salt based on
                                 ! double-diffusive parameterization from MOM4/KPP.
-PRANDTL_TURB = 1.0              !   [nondim] default = 1.0
+PRANDTL_TURB = 1.25             !   [nondim] default = 1.0
                                 ! The turbulent Prandtl number applied to shear instability.
 DYNAMIC_VISCOUS_ML = False      !   [Boolean] default = False
                                 ! If true, use a bulk Richardson number criterion to determine the mixed layer
@@ -1006,9 +1006,9 @@ HTBL_SHELF = 10.0               !   [m] default = 10.0
 KV = 1.0E-04                    !   [m2 s-1]
                                 ! The background kinematic viscosity in the interior. The molecular value, ~1e-6
                                 ! m2 s-1, may be used.
-KV_BBL_MIN = 1.0E-04            !   [m2 s-1] default = 1.0E-04
+KV_BBL_MIN = 1.0E-06            !   [m2 s-1] default = 1.0E-04
                                 ! The minimum viscosities in the bottom boundary layer.
-KV_TBL_MIN = 1.0E-04            !   [m2 s-1] default = 1.0E-04
+KV_TBL_MIN = 1.0E-06            !   [m2 s-1] default = 1.0E-04
                                 ! The minimum viscosities in the top boundary layer.
 CORRECT_BBL_BOUNDS = False      !   [Boolean] default = False
                                 ! If true, uses the correct bounds on the BBL thickness and viscosity so that
@@ -1133,11 +1133,11 @@ NOSLIP = False                  !   [Boolean] default = False
                                 ! conditions are assumed. The implementation of the free slip BCs on a C-grid is
                                 ! much cleaner than the no slip BCs. The use of free slip BCs is strongly
                                 ! encouraged, and no slip BCs are not used with the biharmonic viscosity.
-CORIOLIS_EN_DIS = False         !   [Boolean] default = False
+CORIOLIS_EN_DIS = True          !   [Boolean] default = False
                                 ! If true, two estimates of the thickness fluxes are used to estimate the
                                 ! Coriolis term, and the one that dissipates energy relative to the other one is
                                 ! used.
-CORIOLIS_SCHEME = "SADOURNY75_ENSTRO" ! default = "SADOURNY75_ENERGY"
+CORIOLIS_SCHEME = "SADOURNY75_ENERGY" ! default = "SADOURNY75_ENERGY"
                                 ! CORIOLIS_SCHEME selects the discretization for the Coriolis terms. Valid
                                 ! values are:
                                 !    SADOURNY75_ENERGY - Sadourny, 1975; energy cons.
@@ -1146,11 +1146,11 @@ CORIOLIS_SCHEME = "SADOURNY75_ENSTRO" ! default = "SADOURNY75_ENERGY"
                                 !    ARAKAWA_LAMB81    - Arakawa & Lamb, 1981; En. + Enst.
                                 !    ARAKAWA_LAMB_BLEND - A blend of Arakawa & Lamb with
                                 !                         Arakawa & Hsu and Sadourny energy
-BOUND_CORIOLIS = True           !   [Boolean] default = False
+BOUND_CORIOLIS = False          !   [Boolean] default = False
                                 ! If true, the Coriolis terms at u-points are bounded by the four estimates of
                                 ! (f+rv)v from the four neighboring v-points, and similarly at v-points.  This
-                                ! option would have no effect on the SADOURNY Coriolis scheme if it were
-                                ! possible to use centered difference thickness fluxes.
+                                ! option is always effectively false with CORIOLIS_EN_DIS defined and
+                                ! CORIOLIS_SCHEME set to SADOURNY75_ENERGY.
 KE_SCHEME = "KE_ARAKAWA"        ! default = "KE_ARAKAWA"
                                 ! KE_SCHEME selects the discretization for acceleration due to the kinetic
                                 ! energy gradient. Valid values are:
@@ -1365,16 +1365,12 @@ RE_AH = 0.0                     !   [nondim] default = 0.0
                                 ! Reynolds number is equal to this.
 SMAG_BI_CONST = 0.06            !   [nondim] default = 0.0
                                 ! The nondimensional biharmonic Smagorinsky constant, typically 0.015 - 0.06.
-BOUND_CORIOLIS_BIHARM = True    !   [Boolean] default = True
+BOUND_CORIOLIS_BIHARM = False   !   [Boolean] default = False
                                 ! If true use a viscosity that increases with the square of the velocity shears,
                                 ! so that the resulting viscous drag is of comparable magnitude to the Coriolis
                                 ! terms when the velocity differences between adjacent grid points is
                                 ! 0.5*BOUND_CORIOLIS_VEL.  The default is the value of BOUND_CORIOLIS (or
                                 ! false).
-BOUND_CORIOLIS_VEL = 6.0        !   [m s-1] default = 6.0
-                                ! The velocity scale at which BOUND_CORIOLIS_BIHARM causes the biharmonic drag
-                                ! to have comparable magnitude to the Coriolis acceleration.  The default is set
-                                ! by MAXVEL.
 USE_LAND_MASK_FOR_HVISC = True  !   [Boolean] default = True
                                 ! If true, use Use the land mask for the computation of thicknesses at velocity
                                 ! locations. This eliminates the dependence on arbitrary values over land or
@@ -1582,7 +1578,7 @@ AGGREGATE_FW_FORCING = True     !   [Boolean] default = True
 MIX_BOUNDARY_TRACERS = True     !   [Boolean] default = True
                                 ! If true, mix the passive tracers in massless layers at the bottom into the
                                 ! interior as though a diffusivity of KD_MIN_TR were operating.
-KD_MIN_TR = 2.0E-06             !   [m2 s-1] default = 2.0E-06
+KD_MIN_TR = 1.5E-06             !   [m2 s-1] default = 1.5E-06
                                 ! A minimal diffusivity that should always be applied to tracers, especially in
                                 ! massless layers near the bottom. The default is 0.1*KD.
 KD_BBL_TR = 0.0                 !   [m2 s-1] default = 0.0
@@ -1670,12 +1666,12 @@ SIMPLE_TKE_TO_KD = True         !   [Boolean] default = False
 
 ! === module MOM_bkgnd_mixing ===
 ! Adding static vertical background mixing coefficients
-KD = 2.0E-05                    !   [m2 s-1] default = 0.0
+KD = 1.5E-05                    !   [m2 s-1] default = 0.0
                                 ! The background diapycnal diffusivity of density in the interior. Zero or the
                                 ! molecular value, ~1e-7 m2 s-1, may be used.
-KD_MIN = 2.0E-06                !   [m2 s-1] default = 2.0E-07
+KD_MIN = 1.5E-07                !   [m2 s-1] default = 1.5E-07
                                 ! The minimum diapycnal diffusivity.
-KDML = 2.0E-05                  !   [m2 s-1] default = 2.0E-05
+KDML = 1.5E-05                  !   [m2 s-1] default = 1.5E-05
                                 ! If BULKMIXEDLAYER is false, KDML is the elevated diapycnal diffusivity in the
                                 ! topmost HMIX of fluid. KDML is only used if BULKMIXEDLAYER is false.
 BRYAN_LEWIS_DIFFUSIVITY = False !   [Boolean] default = False
@@ -1737,11 +1733,11 @@ SHEARMIX_RATE = 0.089           !   [nondim] default = 0.089
 MAX_RINO_IT = 25                !   [nondim] default = 50
                                 ! The maximum number of iterations that may be used to estimate the Richardson
                                 ! number driven mixing.
-KD_KAPPA_SHEAR_0 = 2.0E-05      !   [m2 s-1] default = 2.0E-05
+KD_KAPPA_SHEAR_0 = 1.5E-05      !   [m2 s-1] default = 1.5E-05
                                 ! The background diffusivity that is used to smooth the density and shear
                                 ! profiles before solving for the diffusivities.  The default is the greater of
                                 ! KD and 1e-7 m2 s-1.
-KD_TRUNC_KAPPA_SHEAR = 2.0E-07  !   [m2 s-1] default = 2.0E-07
+KD_TRUNC_KAPPA_SHEAR = 2.0E-07  !   [m2 s-1] default = 1.5E-07
                                 ! The value of shear-driven diffusivity that is considered negligible and is
                                 ! rounded down to 0. The default is 1% of KD_KAPPA_SHEAR_0.
 FRI_CURVATURE = -0.97           !   [nondim] default = -0.97
@@ -1840,7 +1836,7 @@ VAR_PEN_SW = False              !   [Boolean] default = False
                                 ! the e-folding depth of incoming short wave radiation.
 
 ! === module MOM_energetic_PBL ===
-ML_OMEGA_FRAC = 0.0             !   [nondim] default = 0.0
+ML_OMEGA_FRAC = 0.001           !   [nondim] default = 0.0
                                 ! When setting the decay scale for turbulence, use this fraction of the absolute
                                 ! rotation rate blended with the local value of f, as sqrt((1-of)*f^2 +
                                 ! of*4*omega^2).
@@ -1858,28 +1854,49 @@ EPBL_ORIGINAL_PE_CALC = True    !   [Boolean] default = True
 MKE_TO_TKE_EFFIC = 0.0          !   [nondim] default = 0.0
                                 ! The efficiency with which mean kinetic energy released by mechanically forced
                                 ! entrainment of the mixed layer is converted to turbulent kinetic energy.
-TKE_DECAY = 2.5                 !   [nondim] default = 2.5
+TKE_DECAY = 0.001               !   [nondim] default = 2.5
                                 ! TKE_DECAY relates the vertical rate of decay of the TKE available for
                                 ! mechanical entrainment to the natural Ekman depth.
-EPBL_MSTAR_SCHEME = "CONSTANT"  ! default = "CONSTANT"
+EPBL_MSTAR_SCHEME = "REICHL_H18" ! default = "CONSTANT"
                                 ! EPBL_MSTAR_SCHEME selects the method for setting mstar.  Valid values are:
                                 !    CONSTANT   - Use a fixed mstar given by MSTAR
                                 !    OM4        - Use L_Ekman/L_Obukhov in the sabilizing limit, as in OM4
                                 !    REICHL_H18 - Use the scheme documented in Reichl & Hallberg, 2018.
-MSTAR = 1.2                     !   [nondim] default = 1.2
-                                ! The ratio of the friction velocity cubed to the TKE input to the mixed layer.
-                                ! This option is used if EPBL_MSTAR_SCHEME = CONSTANT.
-NSTAR = 0.2                     !   [nondim] default = 0.2
+MSTAR_CAP = 10.0                !   [nondim] default = -1.0
+                                ! If this value is positive, it sets the maximum value of mstar allowed in ePBL.
+                                ! (This is not used if EPBL_MSTAR_SCHEME = CONSTANT).
+RH18_MSTAR_CN1 = 0.275          !   [nondim] default = 0.275
+                                ! MSTAR_N coefficient 1 (outter-most coefficient for fit). The value of 0.275 is
+                                ! given in RH18.  Increasing this coefficient increases MSTAR for all values of
+                                ! Hf/ust, but more effectively at low values (weakly developed OSBLs).
+RH18_MSTAR_CN2 = 8.0            !   [nondim] default = 8.0
+                                ! MSTAR_N coefficient 2 (coefficient outside of exponential decay). The value of
+                                ! 8.0 is given in RH18.  Increasing this coefficient increases MSTAR for all
+                                ! values of HF/ust, with a much more even effect across a wide range of Hf/ust
+                                ! than CN1.
+RH18_MSTAR_CN3 = -6.0           !   [nondim] default = -5.0
+                                ! MSTAR_N coefficient 3 (exponential decay coefficient). The value of -5.0 is
+                                ! given in RH18.  Increasing this increases how quickly the value of MSTAR
+                                ! decreases as Hf/ust increases.
+RH18_MSTAR_CS1 = 0.2            !   [nondim] default = 0.2
+                                ! MSTAR_S coefficient for RH18 in stabilizing limit. The value of 0.2 is given
+                                ! in RH18 and increasing it increases MSTAR in the presence of a stabilizing
+                                ! surface buoyancy flux.
+RH18_MSTAR_CS2 = 0.4            !   [nondim] default = 0.4
+                                ! MSTAR_S exponent for RH18 in stabilizing limit. The value of 0.4 is given in
+                                ! RH18 and increasing it increases MSTAR exponentially in the presence of a
+                                ! stabilizing surface buoyancy flux.
+NSTAR = 0.06                    !   [nondim] default = 0.2
                                 ! The portion of the buoyant potential energy imparted by surface fluxes that is
                                 ! available to drive entrainment at the base of mixed layer when that energy is
                                 ! positive.
-MSTAR_CONV_ADJ = 0.0            !   [nondim] default = 0.0
+MSTAR_CONV_ADJ = 0.66           !   [nondim] default = 0.0
                                 ! Coefficient used for reducing mstar during convection due to reduction of
                                 ! stable density gradient.
 USE_MLD_ITERATION = True        !   [Boolean] default = True
                                 ! A logical that specifies whether or not to use the distance to the bottom of
                                 ! the actively turbulent boundary layer to help set the EPBL length scale.
-EPBL_TRANSITION_SCALE = 0.1     !   [nondim] default = 0.1
+EPBL_TRANSITION_SCALE = 0.01    !   [nondim] default = 0.1
                                 ! A scale for the mixing length in the transition layer at the edge of the
                                 ! boundary layer as a fraction of the boundary layer thickness.
 MLD_ITERATION_GUESS = False     !   [Boolean] default = False
@@ -1920,11 +1937,36 @@ EPBL_VEL_SCALE_FACTOR = 1.0     !   [nondim] default = 1.0
                                 ! the PBL diffusivity.
 VSTAR_SURF_FAC = 1.2            !   [nondim] default = 1.2
                                 ! The proportionality times ustar to set vstar at the surface.
-USE_LA_LI2016 = False           !   [nondim] default = False
+USE_LA_LI2016 = True            !   [nondim] default = False
                                 ! A logical to use the Li et al. 2016 (submitted) formula to determine the
                                 ! Langmuir number.
-EPBL_LT = False                 !   [nondim] default = False
-                                ! A logical to use a LT parameterization.
+EPBL_LANGMUIR_SCHEME = "ADDITIVE" ! default = "NONE"
+                                ! EPBL_LANGMUIR_SCHEME selects the method for including Langmuir turbulence.
+                                ! Valid values are:
+                                !    NONE     - Do not do any extra mixing due to Langmuir turbulence
+                                !    RESCALE  - Use a multiplicative rescaling of mstar to account for Langmuir
+                                !      turbulence
+                                !    ADDITIVE - Add a Langmuir turblence contribution to mstar to other
+                                !      contributions
+LT_ENHANCE_COEF = 0.447         !   [nondim] default = 0.447
+                                ! Coefficient for Langmuir enhancement of mstar
+LT_ENHANCE_EXP = -1.33          !   [nondim] default = -1.33
+                                ! Exponent for Langmuir enhancementt of mstar
+LT_MOD_LAC1 = -0.87             !   [nondim] default = -0.87
+                                ! Coefficient for modification of Langmuir number due to MLD approaching Ekman
+                                ! depth.
+LT_MOD_LAC2 = 0.0               !   [nondim] default = 0.0
+                                ! Coefficient for modification of Langmuir number due to MLD approaching stable
+                                ! Obukhov depth.
+LT_MOD_LAC3 = 0.0               !   [nondim] default = 0.0
+                                ! Coefficient for modification of Langmuir number due to MLD approaching
+                                ! unstable Obukhov depth.
+LT_MOD_LAC4 = 0.95              !   [nondim] default = 0.95
+                                ! Coefficient for modification of Langmuir number due to ratio of Ekman to
+                                ! stable Obukhov depth.
+LT_MOD_LAC5 = 0.95              !   [nondim] default = 0.95
+                                ! Coefficient for modification of Langmuir number due to ratio of Ekman to
+                                ! unstable Obukhov depth.
 !EPBL_USTAR_MIN = 1.45842E-18   !   [m s-1]
                                 ! The (tiny) minimum friction velocity used within the ePBL code, derived from
                                 ! OMEGA and ANGSTROM.
@@ -1940,10 +1982,10 @@ EXP_OPACITY_SCHEME = "SINGLE_EXP" ! default = "SINGLE_EXP"
                                 ! Currently valid options include:
                                 !        SINGLE_EXP - Single Exponent decay.
                                 !        DOUBLE_EXP - Double Exponent decay.
-PEN_SW_SCALE = 10.0             !   [m] default = 0.0
+PEN_SW_SCALE = 0.0              !   [m] default = 0.0
                                 ! The vertical absorption e-folding depth of the penetrating shortwave
                                 ! radiation.
-PEN_SW_FRAC = 0.42              !   [nondim] default = 0.0
+PEN_SW_FRAC = 0.0               !   [nondim] default = 0.0
                                 ! The fraction of the shortwave radiation that penetrates below the surface.
 PEN_SW_NBANDS = 1               ! default = 1
                                 ! The number of bands of penetrating shortwave radiation.
@@ -1987,7 +2029,7 @@ KHTR_PASSIVITY_MIN = 0.5        !   [nondim] default = 0.5
 DIFFUSE_ML_TO_INTERIOR = False  !   [Boolean] default = False
                                 ! If true, enable epipycnal mixing between the surface boundary layer and the
                                 ! interior.
-CHECK_DIFFUSIVE_CFL = True      !   [Boolean] default = False
+CHECK_DIFFUSIVE_CFL = False     !   [Boolean] default = False
                                 ! If true, use enough iterations the diffusion to ensure that the diffusive
                                 ! equivalent of the CFL limit is not violated.  If false, always use the greater
                                 ! of 1 or MAX_TR_DIFFUSION_CFL iteration.
@@ -2021,7 +2063,7 @@ CALCULATE_APE = True            !   [Boolean] default = True
 WRITE_STOCKS = True             !   [Boolean] default = True
                                 ! If true, write the integrated tracer amounts to stdout when the energy files
                                 ! are written.
-MAXTRUNC = 100000               !   [truncations save_interval-1] default = 0
+MAXTRUNC = 0                    !   [truncations save_interval-1] default = 0
                                 ! The run will be stopped, and the day set to a very large value if the velocity
                                 ! is truncated more than MAXTRUNC times between energy saves.  Set MAXTRUNC to 0
                                 ! to stop if there is any truncation of velocities.
@@ -2040,7 +2082,7 @@ READ_DEPTH_LIST = False         !   [Boolean] default = False
 DEPTH_LIST_MIN_INC = 1.0E-10    !   [m] default = 1.0E-10
                                 ! The minimum increment between the depths of the entries in the depth-list
                                 ! file.
-ENERGYSAVEDAYS = 1.0            !   [days] default = 1.0
+ENERGYSAVEDAYS = 0.0416666666666667 !   [days] default = 1.0
                                 ! The interval in units of TIMEUNIT between saves of the energies of the run and
                                 ! other globally summed diagnostics.
 ENERGYSAVEDAYS_GEOMETRIC = 0.0  !   [days] default = 0.0
