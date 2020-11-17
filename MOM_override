@@ -14,3 +14,4 @@ DEBUG_BT = False
 #override DO_RIVERMIX = True
 #override RIVERMIX_DEPTH = 10
 #override USE_LA_LI2016 = True
+#override DOUBLE_DIFFUSION = True        !   [Boolean] default = False
