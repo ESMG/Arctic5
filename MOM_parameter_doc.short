@@ -392,9 +392,6 @@ KH_RES_FN_POWER = 100           !   [nondim] default = 2
 CHANNEL_DRAG = True             !   [Boolean] default = False
                                 ! If true, the bottom drag is exerted directly on each layer proportional to the
                                 ! fraction of the bottom it overlies.
-DOUBLE_DIFFUSION = True         !   [Boolean] default = False
-                                ! If true, increase diffusivites for temperature or salt based on
-                                ! double-diffusive parameterization from MOM4/KPP.
 PRANDTL_TURB = 1.25             !   [nondim] default = 1.0
                                 ! The turbulent Prandtl number applied to shear instability.
 HBBL = 10.0                     !   [m]
@@ -572,6 +569,9 @@ HENYEY_IGW_BACKGROUND = True    !   [Boolean] default = False
 KD_MAX = 0.1                    !   [m2 s-1] default = -1.0
                                 ! The maximum permitted increment for the diapycnal diffusivity from TKE-based
                                 ! parameterizations, or a negative value for no limit.
+DOUBLE_DIFFUSION = True         !   [Boolean] default = False
+                                ! If true, increase diffusivites for temperature or salinity based on the
+                                ! double-diffusive parameterization described in Large et al. (1994).
 
 ! === module MOM_kappa_shear ===
 ! Parameterization of shear-driven turbulence following Jackson, Hallberg and Legg, JPO 2008
