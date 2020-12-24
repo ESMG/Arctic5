@@ -95,7 +95,7 @@ BOUND_SALINITY = True           !   [Boolean] default = False
                                 ! salt than is available and drive the salinity negative otherwise.)
 MIN_SALINITY = 0.0              !   [PPT] default = 0.0
                                 ! The minimum value of salinity when BOUND_SALINITY=True.
-C_P = 3925.0                    !   [J kg-1 K-1] default = 3991.86795711963
+C_P = 3992.0                    !   [J kg-1 K-1] default = 3991.86795711963
                                 ! The heat capacity of sea water, approximated as a constant. This is only used
                                 ! if ENABLE_THERMODYNAMICS is true. The default value is from the TEOS-10
                                 ! definition of conservative temperature.
@@ -1835,7 +1835,7 @@ DO_RIVERMIX = True              !   [Boolean] default = False
                                 ! down to RIVERMIX_DEPTH if the ocean is that deep.
 RIVERMIX_DEPTH = 10.0           !   [m] default = 0.0
                                 ! The depth to which rivers are mixed if DO_RIVERMIX is defined.
-USE_RIVER_HEAT_CONTENT = False  !   [Boolean] default = False
+USE_RIVER_HEAT_CONTENT = True   !   [Boolean] default = False
                                 ! If true, use the fluxes%runoff_Hflx field to set the heat carried by runoff,
                                 ! instead of using SST*CP*liq_runoff.
 USE_CALVING_HEAT_CONTENT = False !   [Boolean] default = False
@@ -1992,10 +1992,10 @@ EXP_OPACITY_SCHEME = "SINGLE_EXP" ! default = "SINGLE_EXP"
                                 ! Currently valid options include:
                                 !        SINGLE_EXP - Single Exponent decay.
                                 !        DOUBLE_EXP - Double Exponent decay.
-PEN_SW_SCALE = 0.0              !   [m] default = 0.0
+PEN_SW_SCALE = 10.0             !   [m] default = 0.0
                                 ! The vertical absorption e-folding depth of the penetrating shortwave
                                 ! radiation.
-PEN_SW_FRAC = 0.0               !   [nondim] default = 0.0
+PEN_SW_FRAC = 0.42              !   [nondim] default = 0.0
                                 ! The fraction of the shortwave radiation that penetrates below the surface.
 PEN_SW_NBANDS = 1               ! default = 1
                                 ! The number of bands of penetrating shortwave radiation.
@@ -2039,7 +2039,7 @@ KHTR_PASSIVITY_MIN = 0.5        !   [nondim] default = 0.5
 DIFFUSE_ML_TO_INTERIOR = False  !   [Boolean] default = False
                                 ! If true, enable epipycnal mixing between the surface boundary layer and the
                                 ! interior.
-CHECK_DIFFUSIVE_CFL = False     !   [Boolean] default = False
+CHECK_DIFFUSIVE_CFL = True      !   [Boolean] default = False
                                 ! If true, use enough iterations the diffusion to ensure that the diffusive
                                 ! equivalent of the CFL limit is not violated.  If false, always use the greater
                                 ! of 1 or MAX_TR_DIFFUSION_CFL iteration.

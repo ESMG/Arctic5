@@ -23,7 +23,7 @@ FRAZIL = True                   !   [Boolean] default = False
 BOUND_SALINITY = True           !   [Boolean] default = False
                                 ! If true, limit salinity to being positive. (The sea-ice model may ask for more
                                 ! salt than is available and drive the salinity negative otherwise.)
-C_P = 3925.0                    !   [J kg-1 K-1] default = 3991.86795711963
+C_P = 3992.0                    !   [J kg-1 K-1] default = 3991.86795711963
                                 ! The heat capacity of sea water, approximated as a constant. This is only used
                                 ! if ENABLE_THERMODYNAMICS is true. The default value is from the TEOS-10
                                 ! definition of conservative temperature.
@@ -596,7 +596,7 @@ IGNORE_FLUXES_OVER_LAND = True  !   [Boolean] default = False
 DO_RIVERMIX = True              !   [Boolean] default = False
                                 ! If true, apply additional mixing wherever there is runoff, so that it is mixed
                                 ! down to RIVERMIX_DEPTH if the ocean is that deep.
-RIVERMIX_DEPTH = 10.0           !   [m] default = 0.0
+RIVERMIX_DEPTH = 2.0            !   [m] default = 0.0
                                 ! The depth to which rivers are mixed if DO_RIVERMIX is defined.
 
 ! === module MOM_energetic_PBL ===
@@ -642,6 +642,11 @@ EPBL_LANGMUIR_SCHEME = "ADDITIVE" ! default = "NONE"
                                 !      contributions
 
 ! === module MOM_opacity ===
+PEN_SW_SCALE = 10.0             !   [m] default = 0.0
+                                ! The vertical absorption e-folding depth of the penetrating shortwave
+                                ! radiation.
+PEN_SW_FRAC = 0.42              !   [nondim] default = 0.0
+                                ! The fraction of the shortwave radiation that penetrates below the surface.
 
 ! === module MOM_tracer_advect ===
 TRACER_ADVECTION_SCHEME = "PPM:H3" ! default = "PLM"
@@ -651,11 +656,12 @@ TRACER_ADVECTION_SCHEME = "PPM:H3" ! default = "PLM"
                                 !   PPM    - Piecewise Parabolic Method (Colella-Woodward)
 
 ! === module MOM_tracer_hor_diff ===
+CHECK_DIFFUSIVE_CFL = True      !   [Boolean] default = False
+                                ! If true, use enough iterations the diffusion to ensure that the diffusive
+                                ! equivalent of the CFL limit is not violated.  If false, always use the greater
+                                ! of 1 or MAX_TR_DIFFUSION_CFL iteration.
 
 ! === module MOM_sum_output ===
-ENERGYSAVEDAYS = 0.0416666666666667 !   [days] default = 1.0
-                                ! The interval in units of TIMEUNIT between saves of the energies of the run and
-                                ! other globally summed diagnostics.
 
 ! === module ocean_model_init ===
 
