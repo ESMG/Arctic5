@@ -150,4 +150,6 @@ Arctic 50 vertical levels
 "ice_model",  "CI_tot",        "aice",         "ocean_monthly", "all", "mean", "none",2
 "ice_model",  "HI",     "hice",      "ocean_monthly", "all", "mean", "none",2
 "ice_model",  "HS",     "hsnow",     "ocean_monthly", "all", "mean", "none",2
+"ice_model",  "UI",     "uice",      "ocean_monthly", "all", "mean", "none",2
+"ice_model",  "VI",     "vice",      "ocean_monthly", "all", "mean", "none",2
 "ice_model",  "sivol",  "sivol",     "ocean_monthly", "all", "mean", "none",2

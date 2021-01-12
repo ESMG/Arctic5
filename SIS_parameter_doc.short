@@ -93,6 +93,8 @@ DT_ICE_DYNAMICS = 300.0         !   [seconds] default = -1.0
                                 ! The time step used for the slow ice dynamics, including stepping the
                                 ! continuity equation and interactions between the ice mass field and
                                 ! velocities.  If 0 or negative the coupling time step will be used.
+LEMIEUX_LANDFAST = True         !   [Boolean] default = False
+                                ! If true, turn on Lemieux landfast ice parameterization.
 ICE_COVER_DISCARD = 1.0E-30     !   [nondim] default = -1.0
                                 ! A tiny fractional ice coverage which if positive causes the mass in categories
                                 ! with less than this coverage to be discarded.
