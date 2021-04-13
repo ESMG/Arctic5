@@ -7,3 +7,4 @@
 #override ADCROFT_ADVECTIVE_CFL = True
 !#override ICE_YIELD_ELLIPTICITY = 1.5
 #override LEMIEUX_LANDFAST = True
+!#override MERGED_CONTINUITY = True
