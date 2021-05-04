@@ -28,6 +28,10 @@ Arctic 50 vertical levels
 "ocean_model", "SSH",          "ssh",              "ocean_hourly", "all", .false., "none",2
 "ocean_model", "ubt",          "ubt",              "ocean_hourly", "all", .false., "none",2
 "ocean_model", "vbt",          "vbt",              "ocean_hourly", "all", .false., "none",2
+"ice_model",  "siconc",   "aice",      "ocean_hourly", "all", ".false.", "none",2
+"ice_model",  "UI",       "uice",      "ocean_hourly", "all", ".false.", "none",2
+"ice_model",  "VI",       "vice",      "ocean_hourly", "all", ".false.", "none",2
+"ice_model",  "HI",       "hice",      "ocean_hourly", "all", ".false.", "none",2
 #"ice_model",  "SWDN",       "swdn",      "ocean_hourly", "all", ".false.", "none",2
 
 ## Bering Strait (east-west section)
@@ -132,7 +136,7 @@ Arctic 50 vertical levels
 "ocean_model",  "tauy",       "tauy",              "ocean_daily", "all", "mean", "none",2
 "ocean_model",  "ustar",      "ustar",             "ocean_daily", "all", "mean", "none",2  # friction vel
 #"ocean_model",  "Kd_interface",  "Kd_interface",  "ocean_daily", "all", "mean", "none",2  # friction vel
-"ice_model",  "CI_tot",   "aice",      "ice_daily", "all", "mean", "none",2
+"ice_model",  "siconc",   "aice",      "ice_daily", "all", "mean", "none",2
 "ice_model",  "UI",       "uice",      "ice_daily", "all", "mean", "none",2
 "ice_model",  "VI",       "vice",      "ice_daily", "all", "mean", "none",2
 "ice_model",  "HI",       "hice",      "ice_daily", "all", "mean", "none",2
